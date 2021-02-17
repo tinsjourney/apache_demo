@@ -1,0 +1,15 @@
+---
+- name: Install Apache package
+  hosts: "{{ hosts_var }}"
+  become: true
+  tasks:
+  - name: Install Package 
+    ansible.builtin.package:
+      name: httpd
+      state: latest
+
+  - name: Start and Enable Apache
+    ansible.builtin.service:
+      name: httpd
+      state: started
+      enabled: yes
